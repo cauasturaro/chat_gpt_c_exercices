@@ -30,7 +30,7 @@ Expected output:
 
 int main(void)
 {
-    int r, c; // R <= 1; C <= 10
+    int r, c; // R <= 1 C <= 10
     scanf("%d %d", &r, &c);
     int matrix[r][c];
 
