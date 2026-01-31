@@ -36,23 +36,25 @@ int main(void)
     int amount, min, max;
     scanf("%d", &amount);
 
-    int *vetor = malloc(amount * sizeof(int));
+    int *array = malloc(amount * sizeof(int));
 
     for (int i = 0; i < amount; i++)
     {
-        scanf("%d", &vetor[i]);
+        scanf("%d", &array[i]);
 
         if (i == 0)
         {
-            min = vetor[i];
-            max = vetor[i];
+            min = array[i];
+            max = array[i];
         }
 
-        if (vetor[i] > max)
-            max = vetor[i];
-        if (vetor[i] < min)
-            min = vetor[i];
+        if (array[i] > max)
+            max = array[i];
+        if (array[i] < min)
+            min = array[i];
     }
 
-    printf("%d\n%d", max, min);
+    printf("%d\n%d\n", max, min);
+
+    free(array);
 }
