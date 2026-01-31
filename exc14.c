@@ -55,4 +55,5 @@ int main(void)
     }
 
     printf("%d\n", found);
+    free(array);
 }
