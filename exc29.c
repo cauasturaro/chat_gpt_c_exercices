@@ -1,6 +1,6 @@
 /*
 ========================================
-Exercise 28
+Exercise 29
 Difficulty: Medium+
 Topic: Arrays, Pointers, Functions
 ========================================
@@ -9,7 +9,7 @@ Write a C program that:
 
 - Reads an integer N (1 ≤ N ≤ 100).
 - Reads N integers into an array.
-- Uses a function to compute the **sum of the odd numbers** in the array.
+- Uses a function to find the **second largest value** in the array.
 - The function must receive:
     - a pointer to the first element of the array
     - the size of the array
@@ -17,29 +17,43 @@ Write a C program that:
 
 Rules:
 - Do NOT use array indexing inside the function.
-- Do NOT use auxiliary arrays.
 - Do NOT use built-in helper functions.
-- Print ONLY the sum of odd elements, followed by a newline.
+- Do NOT use auxiliary arrays.
+- Print ONLY the second largest value, followed by a newline.
 
 Example (input):
-6
-1 2 4 7 9 10
+5
+3 9 2 7 1
 
 Expected output:
-17
+7
 */
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
-int sum_of_odds(int *ptr, int size)
+int sec_largest(int *ptr, int size)
 {
-    int sum = 0;
-    for (int i = 0; i < size; i++, ptr++)
+    if (size < 2)
+        return *ptr;
+
+    int largest = *ptr;
+    int sec_largest = INT_MIN;
+
+    ptr++;
+    for (int i = 1; i < size; i++, ptr++)
     {
-        if (*ptr % 2 != 0)
-            sum += *ptr;
+        if (largest < *ptr)
+        {
+            sec_largest = largest;
+            largest = *ptr;
+        }
+        else if (sec_largest < *ptr && *ptr != largest)
+            sec_largest = *ptr;
     }
-    return sum;
+
+    return sec_largest;
 }
 
 int main(void)
@@ -52,7 +66,7 @@ int main(void)
     for (int i = 0; i < size; i++, ptr++)
         scanf("%d", ptr);
 
-    printf("%d\n", sum_of_odds(array, size));
+    printf("%d\n", sec_largest(array, size));
     free(array);
     return 0;
 }
