@@ -29,6 +29,7 @@ Expected output:
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int total_sum(int *ptr, int size)
 {
