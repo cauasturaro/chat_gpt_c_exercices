@@ -32,7 +32,7 @@ Expected output:
 #include <stdio.h>
 #include <stdlib.h>
 
-int how_many_evens(int *ptr, int size)
+int how_many_odds(int *ptr, int size)
 {
     int count = 0;
     for (int i = 0; i < size; i++, ptr++)
@@ -53,7 +53,7 @@ int main(void)
     for (int i = 0; i < size; i++, ptr++)
         scanf("%d", ptr);
 
-    printf("%d", how_many_evens(array, size));
+    printf("%d\n", how_many_odds(array, size));
     free(array);
     return 0;
 }
