@@ -49,7 +49,7 @@ int recursive_max(int *start, int *end)
 {
   if (start == end)
     return *start;
-  int *mid = (end - start) / 2;
+  int *mid = start + (end - start) / 2;
   int left = recursive_max(start, mid);
   int right = recursive_max(mid + 1, end);
   return (left > right) ? left : right;
